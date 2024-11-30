@@ -1,0 +1,317 @@
+/* 画面上部見出し */
+.heading {
+    padding:0 .4em .2em;
+    border-bottom: 3px dashed #2589d0;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* 青色ボタン */
+.button-blue {
+    display: inline-flex;
+    width: auto;
+    margin-right: 5px;
+    padding: .4em 2em;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 0 3px #2589d0;
+    background-color: #2589d0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+}
+.button-blue:hover {
+  opacity: 0.8;
+}
+
+code {
+    font-family: Consolas, Menlo, Monaco, -apple-system, BlinkMacSystemFont, "Segoe UI", Meiryo, monospace;
+}
+
+pre {
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 5px;
+    background: #25292f;
+    color: #fff;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .highlight {
+    position: relative;
+  }
+  .copy-code-button {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.5px;
+    width: 65px;
+    color: var(--text-color);
+    background-color: var(--grey);
+    border: 1px solid var(--black02);
+    border-top-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    white-space: nowrap;
+    padding: 4px 4px 5px 4px;
+    margin: 0 0 0 1px;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  .copy-code-button:hover,
+  .copy-code-button:focus,
+  .copy-code-button:active,
+  .copy-code-button:active:hover {
+    opacity: 0.8;
+  }
+  .copyable-text-area {
+    position: absolute;
+    height: 0;
+    z-index: -1;
+    opacity: .01;
+  }
+  .highlight .copy-code-button {
+    visibility: hidden;
+  }
+  .highlight:hover .copy-code-button {
+    visibility: visible;
+  }
+
+  .table-of-contents {
+    margin-bottom: 30px;
+    border: 2px solid #2589d0;
+    border-radius: 3px;
+}
+
+.table-of-contents div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #2589d0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.table-of-contents div::before {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 5px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 4H21V6H8V4ZM3 3.5H6V6.5H3V3.5ZM3 10.5H6V13.5H3V10.5ZM3 17.5H6V20.5H3V17.5ZM8 11H21V13H8V11ZM8 18H21V20H8V18Z' fill='%23fff'%3E%3C/path%3E%3C/svg%3E");
+    content: '';
+}
+
+.table-of-contents ol {
+    list-style-type: decimal;
+    margin: 0;
+    overflow: hidden;
+}
+
+.table-of-contents > ol {
+    padding: 1em 1em 1em 3em;
+}
+
+.table-of-contents ol ol {
+    margin-top: 5px;
+    padding-left: 1.1em;
+}
+
+.table-of-contents li {
+    padding: 5px 0;
+    font-weight: 600;
+}
+
+.table-of-contents ol ol li {
+    font-weight: 500;
+    font-size: .9em;
+}
+
+.table-of-contents a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* 詳細ページ用 */
+/* パンくず */
+.breadcrumb {
+  display: flex !important;
+  gap: 0 22px;
+  list-style: none;
+  padding: 0;
+  font-size: .9em;
+}
+
+.breadcrumb li {
+  display: inline-block;
+  align-items: center;
+}
+
+.breadcrumb li:first-child::before {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 4px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20ZM11 13V19H13V13H11Z' fill='%23333333'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  content: '';
+}
+
+.breadcrumb li:not(:last-child)::after {
+  display: inline-block;
+  transform: rotate(45deg);
+  width: .3em;
+  height: .3em;
+  margin-left: 10px;
+  border-top: 1px solid #333333;
+  border-right: 1px solid #333333;
+  content: '';
+}
+
+.breadcrumb a {
+  color: #333333;
+  text-decoration: none;
+}
+
+/* 検索窓 */
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  overflow: hidden;
+  border: 1px solid #777777;
+  border-radius: 3px;
+}
+
+.search-form input {
+  width: 250px;
+  height: 45px;
+  padding: 5px 15px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 1em;
+  outline: none;
+}
+
+.search-form input::placeholder{
+  color: #777777;
+}
+
+.search-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 45px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.search-form button::after {
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z' fill='%23777777'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  content: '';
+}
+
+/* 備考欄 */
+.description-box {
+  display: flex;
+  grid-gap: 0 .7em;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 5px;
+  background-color: #fff9e5;
+  color: #333333;
+}
+
+.description-box::before {
+  width: 24px;
+  height: 24px;
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z' fill='%23ffb36b'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.description-box p {
+  margin: 0;
+  padding: 0 0 0 .7em;
+  border-left: 1px solid #ffb36b;
+}
+
+/* 新規作成ページ・編集ページのテキストボックス */
+.textbox-label,
+.textbox {
+    color: #333;
+}
+
+.textbox-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: .9em;
+}
+
+.textbox {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #969da3;
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.textbox::placeholder {
+    color: #999;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #333;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.button-favorite {
+  display: inline-flex;
+  width: auto;
+  margin: auto;
+  padding: .4em 2em;
+  border: 1px solid #f1443e;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #f1443e;
+  font-size: 1em;
+}
+
+.button-favorite:hover {
+  background-color: f1443e;
+}
+
+.button-favorite::after {
+  width: 1.25em;
+  height: 1.25em;
+  margin-left: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853ZM18.827 6.1701C17.3279 4.66794 14.9076 4.60701 13.337 6.01687L12.0019 7.21524L10.6661 6.01781C9.09098 4.60597 6.67506 4.66808 5.17157 6.17157C3.68183 7.66131 3.60704 10.0473 4.97993 11.6232L11.9999 18.6543L19.0201 11.6232C20.3935 10.0467 20.319 7.66525 18.827 6.1701Z' fill='%23f1443e'%3E%3C/path%3E%3C/svg%3E");
+  content: '';
+}

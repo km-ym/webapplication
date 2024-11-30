@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}編集{% endblock %}
+{% block content %}
+<h1 class="heading">編集</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>
+        <span class="textbox-label">タイトル</span>
+        <input type="text" name="title" class="textbox" value="{{ form.title.value }}"/>
+    </label>
+    <br>
+    <br>
+    <label>
+        <span class="textbox-label">コード</span>
+        <textarea name="code" class="textbox">{{ form.code.value }}</textarea>
+    </label>
+    <br>
+    <br>
+    <label>
+        <span class="textbox-label">メモ欄</span>
+        <textarea name="description" class="textbox" placeholder="メモを入力（任意）">{{ form.description.value }}</textarea>
+    </label>
+    <br>
+    <br>
+    <label>
+        <span class="textbox-label">カテゴリー</span>
+        <select name="category"  class="textbox">
+            <option value="" disabled {% if not form.category.value %}selected{% endif %}>既存のカテゴリーを選択</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if form.category.value == category.id|stringformat:"s" %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <span>新しいカテゴリーを作成</span>
+        <input type="text" name="new_category" class="textbox" placeholder="新しいカテゴリー名を入力">
+    </label>
+    <br>
+    <br>
+    <label>
+        <span class="textbox-label">タグ</span>
+        <select name="tag" class="textbox" multiple>
+            {% for tag in tags %}
+                <option value="{{ tag.id }}" {% if tag in object.tags.all %}selected{% endif %}>
+                    {{ tag.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <span>または新しいタグをカンマ区切りで作成</span>
+        <input type="text" name="new_tags" class="textbox" placeholder="例: Python, Django">
+    </label>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'list' %}" class="button-blue">戻る</a>
+    <input type="submit" class="button-blue" value="更新">
+</form>
+{% if form.errors %}
+    <ul class="errorlist">
+        {% for field, errors in form.errors.items %}
+            <li>{{ field }}: {{ errors|join:", " }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

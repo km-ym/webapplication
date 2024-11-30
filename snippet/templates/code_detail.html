@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}コード詳細{% endblock %}
+
+{% block content %}
+<h1 class="heading">コード詳細</h1>
+
+<ol class="breadcrumb">
+    <li><a href="{% url 'top' %}">ホーム</a></li>
+    <li><a href="{% url 'category' code.pk %}">カテゴリー</a></li> 
+    <li>{{ code.category }}</li>
+</ol>
+
+    <h2>{{ code.title }}</h2>
+
+    <div class="code-block">
+        <button class="copy-button" data-clipboard-target="#code1">copy</button>
+        <pre><code>{{ code.code }}</code></pre>
+    </div>
+
+    <div class="description-box">
+        {% if code.description %}
+            <p>{{ code.description }}</p>
+        {% else %}
+            <p>メモはありません</p>
+        {% endif %}
+    </div>
+    <h3>タグ</h3>
+    {% if tags %}
+        {% for tag in tags %}
+            <a href="{% url 'tag' tag.name %}">{{ tag.name }}</a>
+        {% endfor %}
+    {% else %}
+        <h4>タグはありません</h4>
+    {% endif %}
+
+    <br>
+    <br>
+    <form action="{% url 'favorite_detail' code.id %}" method="post">
+        {% csrf_token %}
+        {% if code in request.user.profile.favorite_codes.all %}
+            <button type="submit" class="button-favorite">お気に入り解除</button>
+        {% else %}
+            <button type="submit" class="button-favorite">お気に入り追加</button>
+        {% endif %}
+    </form>
+    <br>
+    <a href="{% url 'list' %}" class="button-blue">戻る</a>
+</form>
+{% endblock %}

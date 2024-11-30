@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}お気に入り{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="heading">お気に入りコード一覧</h1>
+
+    <ol class="breadcrumb">
+        <li><a href="{% url 'top' %}">ホーム</a></li>
+        <li><a href="{% url 'list' %}">コード一覧</a></li> 
+    </ol>
+
+    <a href="{% url 'new' %}" class="button-create">新規作成</a>
+    <br>
+    <form action="" method="get" class="search-form">
+        <input name="query" value="{{ request.GET.query }}" type="text" placeholder="キーワードを入力"/>
+        <button type="submit" aria-label="検索"></button>
+    </form>
+    <br>
+    {% for code in favorite_codes %}
+    <details class="accordion-menu">
+        <summary>
+            <span class="code-title">{{ code.title }}</span>
+            <div class="button-container">
+                <button type="button" onclick="location.href='{% url 'detail' pk=code.pk %}'" class="button-white">詳細</button>
+                <button type="button" onclick="location.href='{% url 'edit' pk=code.pk %}'" class="button-white">編集</button>
+            </div>
+        </summary>
+        <pre><code>{{ code.code }}</code></pre>
+    </details>
+    {% endfor %}
+
+{% endblock %}
