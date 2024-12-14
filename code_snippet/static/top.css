@@ -315,3 +315,118 @@ pre {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853ZM18.827 6.1701C17.3279 4.66794 14.9076 4.60701 13.337 6.01687L12.0019 7.21524L10.6661 6.01781C9.09098 4.60597 6.67506 4.66808 5.17157 6.17157C3.68183 7.66131 3.60704 10.0473 4.97993 11.6232L11.9999 18.6543L19.0201 11.6232C20.3935 10.0467 20.319 7.66525 18.827 6.1701Z' fill='%23f1443e'%3E%3C/path%3E%3C/svg%3E");
   content: '';
 }
+
+/* アコーディオンメニュー */
+.accordion-menu {
+  max-width: 700px;
+  margin-bottom: 1px;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+.accordion-menu summary {
+  display: flex;
+  /* 原因 */
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0 1em 0 1em;
+  color: #333333;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accordion-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-menu summary::after {
+  transform: translateY(-25%) rotate(45deg);
+  width: 7px;
+  height: 7px;
+  margin-left: 10px;
+  border-bottom: 3px solid #333333b3;
+  border-right: 3px solid #333333b3;
+  content: '';
+  transition: transform .3s;
+}
+
+.accordion-menu[open] summary::after {
+  transform: rotate(225deg);
+}
+
+.accordion-menu[open] p {
+  transform: none;
+  opacity: 1;
+}
+
+/* ボタン右寄せ */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: left;
+  gap: 1px;
+  margin-top: 1em;
+}
+/* 白色ボタン */
+.button-white {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: .4em 1em;
+  margin: 0 0 0 auto;
+  border: 1px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2589d0;
+  font-size: 0.9em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.button-white:hover {
+  background-color: #2589d0;
+  color: #fff;
+}
+
+.code-title {
+  min-width: 78%;
+}
+
+.button-create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 75px;
+  margin-left: 0 auto;
+  padding: .7em 3.2em .7em 2em;
+  border: none;
+  border-radius: 5px;
+  background-color: #2589d0;
+  background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2028%2028%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%2214%22%20style%3D%22fill%3A%23fff%3B%22%2F%3E%0A%3C%2Fsvg%3E);
+  background-position: right 1.5em center;
+  background-size: 1.2em;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.button-create:hover {
+  background-color: #1579c0;
+}
+
+.button-create::before,
+.button-create::after {
+  position: absolute;
+  right: calc(2.1em - 1.5px);
+  width: 3px;
+  height: 10px;
+  border-radius: 1px;
+  background-color: #2589d0;
+  content: '';
+}
+
+.button-create::before {
+  transform: rotate(90deg);
+}
